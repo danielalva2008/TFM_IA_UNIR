@@ -11,6 +11,8 @@ from skimage.transform import resize
 import numpy as np
 from keras.models import load_model
 import tensorflow as tf
+from flask_cors import CORS
+
 
 from numpy.random import seed
 seed(0)
@@ -20,7 +22,7 @@ tf.keras.utils.set_random_seed(
 
 # Define the Flask application
 app = Flask(__name__)
-
+CORS(app)
 
 # Load the quantized models
 def load_quantized_model(model_path):
@@ -67,7 +69,7 @@ def extract_features(model, processed_image):
     return features_train #, features_test
 
 # Define a route for image upload and processing
-@app.route('/process_imagef', methods=['GET', 'POST'])
+@app.route('/process_image', methods=['GET', 'POST'])
 def process_image():
     if request.method == 'GET':
         return jsonify({'message': 'Enviar un request del tipo POST con una imagen para procesar.'})
@@ -83,8 +85,6 @@ def process_image():
 
 
     if file:
-
-        
         # Read the image
         image = imread(file)
 
