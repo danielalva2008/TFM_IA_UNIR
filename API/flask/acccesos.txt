@@ -1,0 +1,2 @@
+Tiene que estar descomprimido pesos.rar(los pesos)  en la carpeta donde se hara la instalacion del API
+https://drive.google.com/file/d/1zzCy3wHdwAeYosrPfEkxWC0ag-IjvtDm/view?usp=sharing

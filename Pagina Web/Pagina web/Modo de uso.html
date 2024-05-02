@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilos personalizados */
+    body {
+      padding-top: 70px; /* Ajuste para fijar el menú superior */
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 10px 0;
+    }
+    .image-container {
+      text-align: center; /* Para centrar la imagen */
+    }
+    .navbar-brand img {
+      height: auto; /* Ajuste la altura automáticamente */
+      max-height: 100%; /* Altura máxima del 100% del contenedor padre (barra de navegación) */
+      width: auto; /* Ancho automático */
+      max-width: 200px; /* Ancho máximo del logo */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="Index.html"><img src="images/logo.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="Analisis.html">Análisis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Modo de uso.html">Modo de uso</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Fab.html">Clasificación FAB</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <!-- Contenido de cada sección -->
+    <br>
+    <!-- Sección Modo de Uso -->
+    <section id="modo-de-uso">
+      <h2>Modo de Uso</h2>
+      <ol>
+        <li>Cargar la imagen en los siguientes formatos: jpg, png, gif, svg, presionando el botón "Seleccionar archivo".</li>
+        <img src="images/analisis.jpg" alt="Subtipo M6">
+        <br>
+        <br>
+        <br>
+        <br>
+        <li>Presionar el botón "Analizar".</li>
+        <img src="images/analisis1.jpg" alt="Subtipo M6">
+        <br>
+        <br>
+        <br>
+        <li>El resultado muestra el porcentaje de precisión del algoritmo, juntamente con una descripción corta del subtipo.</li>
+        <img src="images/analisis2.jpg" alt="Subtipo M6">
+        <br>
+
+      </ol>
+    </section>
+  </div>
+
+  <!-- Pie de página -->
+  <footer>
+    2023 Todos los derechos reservados
+  </footer>
+
+  <!-- Bootstrap JS y dependencias -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

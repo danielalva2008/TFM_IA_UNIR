@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilos personalizados */
+    body {
+      padding-top: 70px; /* Ajuste para fijar el menú superior */
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 10px 0;
+    }
+    .image-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .custom-btn {
+      font-size: 24px;
+      padding: 15px 40px;
+    }
+    .analysis-description {
+      float: right;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="Index.html"><img src="images/logo.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="Analisis.html">Análisis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Modo de uso.html">Modo de uso</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Fab.html">Clasificación FAB</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <!-- Contenido de la sección de análisis -->
+    <section id="analisis">
+      
+	  <br>
+	  <br>
+      <h2>Análisis</h2>
+      <div class="image-container">
+        <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png">
+        <button type="button" class="btn btn-lg btn-primary custom-btn" onclick="performAnalysis()">Analizar Imagen</button>
+        <div id="analysisDescription" class="analysis-description" style="display: none;">
+          <br>
+       <!--    <h3>Descripción del análisis:</h3>
+          <p align="left">La leucemia linfoblástica aguda (LLA) tipo L1 se caracteriza por la proliferación excesiva de linfoblastos inmaduros en la médula ósea y la sangre periférica. Estos linfoblastos son células inmaduras que normalmente se desarrollarían en linfocitos, un tipo de glóbulo blanco maduro.</p>
+          <p align="left">Los pacientes con LLA tipo L1 suelen presentar síntomas como fatiga, debilidad, --> fiebre, pérdida de peso inexplicable, moretones o sangrado fácil, infecciones recurrentes y dolor óseo o articular. Estos síntomas pueden ser el resultado de la supresión de la producción normal de células sanguíneas y la infiltración de la médula ósea y otros tejidos por los linfoblastos.</p>
+        </div>
+      </div>
+      <div id="analysisResult" style="display: none;">
+        <h3>Resultado del análisis:</h3>
+        <p id="resultText"></p>
+        <div id="imagePreview"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Pie de página -->
+  <footer>
+    2023 Todos los derechos reservados
+  </footer>
+
+  <!-- Bootstrap JS y dependencias -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Script para la funcionalidad de análisis -->
+  <script>
+    function performAnalysis() {
+      var fileInput = document.getElementById('imageUpload');
+      var resultParagraph = document.getElementById('resultText');
+      var analysisResultDiv = document.getElementById('analysisResult');
+      var imagePreview = document.getElementById('imagePreview');
+      var analysisDescription = document.getElementById('analysisDescription');
+  
+      if (fileInput.files.length > 0) {
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+  
+        reader.onload = function (e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '100%';
+          imagePreview.innerHTML = '';
+          imagePreview.appendChild(img);
+  
+          // Aquí realizarás la llamada al API para analizar la imagen
+          var apiUrl = 'http://161.132.48.50/process_image?file';
+          var formData = new FormData();
+          formData.append('file', file);
+  
+          fetch(apiUrl, {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            var indice = data.predicted_class; // Suponiendo que el resultado del API es un número del 0 al 12
+            var clase = obtener_equivalencia(indice);
+            resultParagraph.textContent = "El análisis de esta imagen nos arroja un resultado del " + data.probabilidad + "% de probabilidad de tener leucemia linfoblástica aguda de tipo " + clase + ".";
+            analysisResultDiv.style.display = 'block';
+            analysisDescription.style.display = 'block';
+          })
+          .catch(error => {
+            console.error('Error al llamar al API:', error);
+            resultParagraph.textContent = "Ocurrió un error al procesar la imagen. Por favor, inténtalo de nuevo más tarde.";
+            analysisResultDiv.style.display = 'block';
+            analysisDescription.style.display = 'none';
+          });
+        }
+  
+        reader.readAsDataURL(file);
+      } else {
+        alert("Por favor, selecciona una imagen.");
+      }
+    }
+  
+    function obtener_equivalencia(indice) {
+      var equivalencias = {
+        0: "L1",
+        1: "L2",
+        2: "L3",
+        3: "CML",
+        4: "CLL",
+        5: "M1",
+        6: "M2",
+        7: "M3",
+        8: "M4",
+        9: "M5",
+        10: "M6",
+        11: "M7",
+        12: "sanos"
+      };
+      return equivalencias[indice];
+    }
+  </script>
+  
+</body>
+</html>

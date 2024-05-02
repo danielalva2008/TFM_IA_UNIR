@@ -1,0 +1,5 @@
+Flask==3.0.1
+scikit-image==0.22.0
+numpy==1.26.2
+keras==2.15.0
+tensorflow==2.15.0

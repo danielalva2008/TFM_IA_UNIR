@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilos personalizados */
+    body {
+      padding-top: 70px; /* Ajuste para fijar el menú superior */
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 10px 0;
+    }
+    .image-container {
+      text-align: center; /* Para centrar la imagen */
+    }
+    .navbar-brand img {
+      height: auto; /* Ajuste la altura automáticamente */
+      max-height: 100%; /* Altura máxima del 100% del contenedor padre (barra de navegación) */
+      width: auto; /* Ancho automático */
+      max-width: 200px; /* Ancho máximo del logo */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#"><img src="images/logo.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="Analisis.html">Análisis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Modo de uso.html">Modo de uso</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Fab.html">Clasificación FAB</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <!-- Contenido de cada sección -->
+    <br>
+    <section id="analisis">
+      <h2>Análisis</h2>
+      <p>El análisis se centra en el algoritmo de inteligencia artificial diseñado para detectar imágenes de cada subtipo de leucemia. Este algoritmo utiliza técnicas de aprendizaje automático y procesamiento de imágenes para identificar y clasificar con precisión las células sanguíneas afectadas por cada subtipo de la enfermedad.</p>
+      <p>El algoritmo de IA analiza características específicas de las células sanguíneas en las imágenes, como tamaño, forma, textura y distribución de componentes celulares. A partir de esta información, puede distinguir entre los diferentes subtipos de leucemia, proporcionando así una herramienta invaluable para los profesionales médicos en el diagnóstico y tratamiento de la enfermedad.</p>
+    </section>
+
+    <section id="modo-de-uso">
+      <h2>Modo de uso</h2>
+      <p>El modo de uso de la aplicación es simple y directo. El usuario simplemente carga una imagen que contiene células sanguíneas afectadas por la leucemia. Una vez que se carga la imagen, el algoritmo de clasificación automática de la aplicación entra en acción.</p>
+      <p>El algoritmo procesa la imagen y realiza un análisis detallado de las células sanguíneas presentes. Luego, clasifica automáticamente las células según su tipo de leucemia, proporcionando un diagnóstico rápido y preciso. El resultado de la clasificación se presenta al usuario, lo que le permite tomar decisiones informadas sobre el tratamiento y la atención del paciente.</p>
+    </section>
+
+    <section id="clasificacion-fab">
+      <h2>Clasificación FAB</h2>
+      <p>La Clasificación FAB (French-American-British) es un sistema utilizado para clasificar los diferentes subtipos de leucemia según las características morfológicas de las células sanguíneas afectadas. Cada subtipo de leucemia se identifica y clasifica en función de la apariencia de las células bajo el microscopio.</p>
+      <p>En el contexto de esta aplicación, se pueden proporcionar ejemplos visuales de cada subtipo de leucemia según la Clasificación FAB. Estas imágenes ayudan a los profesionales médicos a comprender y reconocer las características distintivas de cada subtipo, lo que facilita un diagnóstico preciso y un tratamiento adecuado.</p>
+    </section>
+  </div>
+
+  <!-- Imagen centrada -->
+  <div class="image-container">
+    <img src="images/leu.jpg" alt="Imagen Leu">
+  </div>
+
+  <!-- Pie de página -->
+  <footer>
+    2023 Todos los derechos reservados
+  </footer>
+
+  <!-- Bootstrap JS y dependencias -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
