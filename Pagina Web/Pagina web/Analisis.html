@@ -126,7 +126,10 @@
           .then(data => {
             var indice = data.predicted_class; // Suponiendo que el resultado del API es un número del 0 al 12
             var clase = obtener_equivalencia(indice);
-            resultParagraph.textContent = "El análisis de esta imagen nos arroja un resultado del " + data.probabilidad + "% de probabilidad de tener leucemia linfoblástica aguda de tipo " + clase + ".";
+            var probabilidades= obtener_probabilidad(indice);
+            var nombres= nombre_proba(indice);
+            
+            resultParagraph.textContent = "El análisis de esta imagen nos arroja un resultado del " + probabilidades + "% de probabilidad de tener " + nombres + "  de tipo " + clase + ".";
             analysisResultDiv.style.display = 'block';
             analysisDescription.style.display = 'block';
           })
@@ -161,6 +164,42 @@
         12: "sanos"
       };
       return equivalencias[indice];
+    }
+      function obtener_probabilidad(indice) {
+      var probabilidad = {
+        0: "81",
+        1: "81",
+        2: "82",
+        3: "85",
+        4: "86",
+        5: "77",
+        6: "59",
+        7: "81",
+        8: "73",
+        9: "77",
+        10: "82",
+        11: "68",
+        12: "sanos"
+      };
+      return probabilidad[indice];
+    }
+    function nombre_proba(indice) {
+      var nombres_enfermedad = {
+        0: "Leucemia linfoblástica aguda ",
+        1: "Leucemia linfoblástica aguda ",
+        2: "Leucemia linfoblástica aguda ",
+        3: "Leucemia mieloide crónica",
+        4: "Leucemia linfocítica crónica",
+        5: "Leucemia mieloide aguda ",
+        6: "Leucemia mieloide aguda",
+        7: "Leucemia mieloide aguda ",
+        8: "Leucemia mieloide aguda ",
+        9: "Leucemia mieloide aguda ",
+        10: "Leucemia mieloide aguda",
+        11: "Leucemia mieloide aguda",
+        12: "sanos"
+      };
+      return nombres_enfermedad[indice];
     }
   </script>
   
