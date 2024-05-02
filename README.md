@@ -8,6 +8,8 @@ Daniel Abraham Alva Segura
 
 OBJETIVO GENERAL
 - Desarrollar un sistema para la detección de leucemia utilizando algoritmos de IA para los tipos aguda, crónica, linfocítica y mieloide y subtipos utilizando diferentes datasets de imágenes que sirvan para su análisis.
+
+
 OBJETIVOS ESPECÍFICOS
 
 -Investigar las técnicas utilizadas en investigaciones similares que aborden la detección de leucemia mediante frotis de sangre y médula ósea
